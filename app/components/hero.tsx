@@ -35,7 +35,7 @@ type InstallRowProps = {
   id?: string;
 };
 
-function InstallRow({ cmd, label }: InstallRowProps) {
+export function InstallRow({ cmd, label }: InstallRowProps) {
   const [copied, setCopied] = useState(false);
   const onCopy = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

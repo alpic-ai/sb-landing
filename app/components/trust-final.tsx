@@ -90,7 +90,7 @@ export function SBFooter() {
           <div>
             <h4>FRAMEWORK</h4>
             <a href="#">Docs</a>
-            <a href="Skybridge Showcase.html">Showcase</a>
+            <a href="/showcase">Showcase</a>
             <a href="#">Examples</a>
           </div>
           <div>

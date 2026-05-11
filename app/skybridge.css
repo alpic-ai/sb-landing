@@ -1972,7 +1972,7 @@ body {
 .sb-final-mountain {
   position: absolute; inset: 0;
   pointer-events: none;
-  background-image: url('/assets/alpic-mountain-bg.png');
+  background-image: url('/assets/alpic-mountain-bg.webp');
   background-size: cover;
   background-position: center 70%;
   background-repeat: no-repeat;
