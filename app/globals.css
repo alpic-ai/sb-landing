@@ -1,26 +1,10 @@
-@import "tailwindcss";
+@import "./alpic-tokens.css";
+@import "./skybridge.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-display: var(--font-mozilla-text), "Inter", system-ui, -apple-system, Segoe UI, sans-serif;
+  --font-body: var(--font-mozilla-text), "Inter", system-ui, -apple-system, Segoe UI, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+html, body { background: var(--sb-bg); color: var(--sb-ink); }
