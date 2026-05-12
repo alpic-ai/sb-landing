@@ -3,6 +3,9 @@ import { SHOWCASE } from "./components/showcase/data";
 
 const BASE = "https://skybridge.tech";
 
+export const dynamic = "force-static";
+export const revalidate = false;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   return [
