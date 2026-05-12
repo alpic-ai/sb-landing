@@ -15,7 +15,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const app = SHOWCASE.find((x) => x.slug === slug);
   if (!app) return {};
-  return { title: `${app.name} — Skybridge Showcase` };
+  const title = `${app.name} — ${app.tagline} | Skybridge Showcase`;
+  const url = `/showcase/${app.slug}`;
+  const images = app.img ? [{ url: app.img, alt: `${app.name} — ${app.tagline}` }] : undefined;
+  return {
+    title,
+    description: app.blurb,
+    alternates: { canonical: url },
+    openGraph: { type: "article", title, description: app.blurb, url, images },
+    twitter: { card: "summary_large_image", title, description: app.blurb, images: images?.map((i) => i.url) },
+  };
 }
 
 export default async function ShowcaseDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -25,8 +34,25 @@ export default async function ShowcaseDetailPage({ params }: { params: Promise<{
 
   const related = SHOWCASE.filter((x) => x.id !== app.id).slice(0, 3);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: app.name,
+    description: app.blurb,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: app.host,
+    url: `https://skybridge.tech/showcase/${app.slug}`,
+    image: app.img ? `https://skybridge.tech${app.img}` : undefined,
+    keywords: app.tags.join(", "),
+    isBasedOn: { "@type": "SoftwareApplication", name: "Skybridge", url: "https://skybridge.tech" },
+  };
+
   return (
     <div className="sb-root" data-theme="dark">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <SBNav />
       <div className="sx-page">
         <div style={{ maxWidth: 1100, margin: '0 auto 24px' }}>

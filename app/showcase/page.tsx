@@ -5,7 +5,25 @@ import { SBFooter } from "../components/trust-final";
 import { ChatGPTFrame } from "../components/showcase/chatgpt-frame";
 import { SHOWCASE, hostAccent } from "../components/showcase/data";
 
-export const metadata: Metadata = { title: "Skybridge — Showcase" };
+const description =
+  "Real MCP Apps built with Skybridge — shipping in ChatGPT and Claude. Browse community and customer projects for inspiration.";
+
+export const metadata: Metadata = {
+  title: "Showcase — MCP Apps built with Skybridge",
+  description,
+  alternates: { canonical: "/showcase" },
+  openGraph: {
+    type: "website",
+    title: "Showcase — MCP Apps built with Skybridge",
+    description,
+    url: "/showcase",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Showcase — MCP Apps built with Skybridge",
+    description,
+  },
+};
 
 export default function ShowcaseListPage() {
   const apps = SHOWCASE.filter((a) => a.category === "3rd Party");
